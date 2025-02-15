@@ -1,5 +1,6 @@
 # smfPC 0.2
 SMF (standard midi file) Player for Cardputer
+<img width="50%" src ="https://github.com/user-attachments/assets/43961a28-a456-451b-917d-3326e87eaf99"><br>
 Work with M5Stack Midi module [Unit-Synth](https://www.switch-science.com/products/9510?_pos=12&_sid=2a4ee9417&_ss=r).
 It works like [this](https://x.com/layer812/status/1890690659733921866)<br>
 It can play [SMF files](https://en.wikipedia.org/wiki/MIDI) from SDcard in your [Cardputer](https://shop.m5stack.com/products/m5stack-cardputer-kit-w-m5stamps3).<br>
@@ -9,17 +10,16 @@ It can play [SMF files](https://en.wikipedia.org/wiki/MIDI) from SDcard in your 
 3.After flush the image, put SMF (.mid) files to your SD card (FAT32 formatted) and power on.<br>
 ## Usage
 1.Push 'M' Button, you can see help.<br>
-<img width="50%" src ="https://github.com/user-attachments/assets/43961a28-a456-451b-917d-3326e87eaf99"><br>
-2.Select file by 'Cursor key'(Up/Down/Left/Right) without Fn. Hit 'Space Key' to Start/Stop playing.<br>
+2.Select file by 'Cursor key'(Up/Down/Left/Right) without Fn. <br>
+3.Hit 'Space Key' to Start/Stop playing.<br>
 ## Compile
 1.Download all of codes into "smfPC" folder on ArduinoIDE as sketch.<br>
 2.Change board type to Cardputer<br>
 3.Install librarys M5UnitSynth and MD_MIDIFile and SDFat.<br>
 4.Compile and Upload to Cardputer<br>
-## Limitations (things to do)
+## Limitations
 This software provided as No warranty.<br>
-Limit numbers.<br>
-- Files in the directory < 255, directory depth < 10. Path name length(include path name) < 255.<br>
+Files in the directory < 255, directory depth < 10. Path name length(include path name) < 255.<br>
 File extention be needed as ".mid"<br>
 Remain some bugs...<br>
 ## Version history
