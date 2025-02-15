@@ -1,7 +1,7 @@
 # smfPC 0.2
-SMF (standard midi file) Player for Cardputer
+SMF (standard midi file) Player for Cardputer<br>
 <img width="50%" src ="https://github.com/user-attachments/assets/43961a28-a456-451b-917d-3326e87eaf99"><br>
-Work with M5Stack Midi module [Unit-Synth](https://www.switch-science.com/products/9510?_pos=12&_sid=2a4ee9417&_ss=r).
+Work with M5Stack Midi module [Unit-Synth](https://www.switch-science.com/products/9510?_pos=12&_sid=2a4ee9417&_ss=r).<br>
 It works like [this](https://x.com/layer812/status/1890690659733921866)<br>
 It can play [SMF files](https://en.wikipedia.org/wiki/MIDI) from SDcard in your [Cardputer](https://shop.m5stack.com/products/m5stack-cardputer-kit-w-m5stamps3).<br>
 ## Install
