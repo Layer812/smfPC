@@ -5,7 +5,7 @@ It works like [this](https://x.com/layer812/status/1890690659733921866)<br>
 It can play [SMF files](https://en.wikipedia.org/wiki/MIDI) from SDcard in your [Cardputer](https://shop.m5stack.com/products/m5stack-cardputer-kit-w-m5stamps3).<br>
 ## Install
 1.Install [M5burner](https://docs.m5stack.com/en/uiflow/m5burner/intro)<br>
-2.You can find the firmware as "smfPC" on M5Burner or put share code '9NxQL96EOvAzWNNk ' in User Custom/Share on M5Burner<br>
+2.You can find the firmware as "smfPC" on M5Burner <br> or put share code '9NxQL96EOvAzWNNk ' in User Custom/Share on M5Burner<br>
 3.After flush the image, put SMF (.mid) files to your SD card (FAT32 formatted) and power on.<br>
 ## Usage
 1.Push 'M' Button, you can see help.<br>
