@@ -29,3 +29,6 @@ Remain some bugs...<br>
 
 ## License
 - Please see the LICENSE file for more information.
+
+## Thanks
+Thanks for super work! [Zoltraak by Cosmic PIANO♪](https://www.youtube.com/watch?v=XzpTOdl-akg)<br>
