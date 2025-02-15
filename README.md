@@ -19,8 +19,9 @@ It can play [SMF files](https://en.wikipedia.org/wiki/MIDI) from SDcard in your 
 ## Limitations (things to do)
 This software provided as No warranty.<br>
 Limit numbers.<br>
-- Files in the directory < 255, directory depth < 10. Path name length(include path name) < 255.
+- Files in the directory < 255, directory depth < 10. Path name length(include path name) < 255.<br>
 File extention be needed as ".mid"<br>
+Remain some bugs...<br>
 ## Version history
 | Version  | Share Code | Change |
 |:----------:|:-----------:|:-------------|
