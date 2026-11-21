@@ -1,0 +1,65 @@
+name: Build smfPC (Cardputer and Cardputer-Adv)
+
+on:
+  push:
+    branches:
+      - feature/v0.3-cardputer-adv
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Arduino firmware (shared Cardputer / ADV)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/setup-arduino-cli@v2
+      - name: Install M5Stack board core and libraries
+        shell: bash
+        run: |
+          set -euxo pipefail
+          arduino-cli config init --overwrite
+          arduino-cli config add board_manager.additional_urls https://static-cdn.m5stack.com/resource/arduino/package_m5stack_index.json
+          arduino-cli core update-index
+          arduino-cli core install m5stack:esp32@3.2.2
+          arduino-cli lib update-index
+          arduino-cli lib install "M5Cardputer@1.1.1" "M5UnitSynth@1.0.1" "MD_MIDIFile@2.6.0" "SdFat@2.2.3"
+      - name: Compatibility fix for MD_MIDIFile 2.6.0 with GCC 14
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path.home() / "Arduino/libraries/MD_MIDIFile/src/MD_MIDITrack.cpp"
+          source = p.read_text()
+          old = "min(ARRAY_SIZE(mev.data), mLen)"
+          new = "min((uint32_t)ARRAY_SIZE(mev.data), mLen)"
+          assert source.count(old) == 1, "MD_MIDIFile source differs; do not patch blindly"
+          p.write_text(source.replace(old, new))
+          PY
+      - name: Compile unmodified root sketch as Arduino sketch
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p "$RUNNER_TEMP/smfPC"
+          cp smfPC.ino "$RUNNER_TEMP/smfPC/smfPC.ino"
+          mkdir -p "$GITHUB_WORKSPACE/build"
+          arduino-cli compile \
+            --fqbn m5stack:esp32:m5stack_cardputer \
+            --warnings all \
+            --output-dir "$GITHUB_WORKSPACE/build" \
+            "$RUNNER_TEMP/smfPC"
+      - name: Upload v0.3 firmware files
+        uses: actions/upload-artifact@v4
+        with:
+          name: smfPC-v0.3-cardputer-and-adv-build
+          path: |
+            build/*.bin
+            build/*.elf
+          if-no-files-found: error
+          retention-days: 14

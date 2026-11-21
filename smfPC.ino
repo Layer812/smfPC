@@ -1,7 +1,8 @@
-// midi Player for Cardputer
+// midi Player for Cardputer / Cardputer-Adv
 // 2025 Layer8
 
 #include "M5Cardputer.h"
+#include <SPI.h>
 #include <SdFat.h>
 #include <MD_MIDIFile.h>
 #include "M5UnitSynth.h"
@@ -10,9 +11,12 @@ M5UnitSynth synth;
 
 #define SERIAL_RATE 31250
 
-// SD chip select pin for SPI comms.
-// Default SD chip select is the SPI SS pin (10 on Uno, 53 on Mega).
-const uint8_t SD_SELECT = SS;
+// Cardputer and Cardputer-Adv share these microSD SPI pins.
+// Explicitly initialize the bus; generic Arduino SS is not the SD CS pin.
+const uint8_t SD_SELECT = 12;
+const uint8_t SD_SCK = 40;
+const uint8_t SD_MISO = 39;
+const uint8_t SD_MOSI = 14;
 
 const uint16_t WAIT_DELAY = 2000; // ms
 #define ARRAY_SIZE(a) (sizeof(a)/sizeof((a)[0]))
@@ -30,7 +34,7 @@ SDFAT	SD;
 MD_MIDIFile SMF;
 
 // for filer.cpp
-#define VERSION 0.2
+#define VERSION 0.3
 
 #define STATNUM 4
 #define STATMAX 10
@@ -378,6 +382,9 @@ void setup(void)
   M5Cardputer.Display.setTextSize(textsize); 
   Serial.begin(115200);
   Serial2.begin(SERIAL_RATE, SERIAL_8N1, 1, 2);
+
+  // Both models: SCK=40, MISO=39, MOSI=14, CS=12.
+  SPI.begin(SD_SCK, SD_MISO, SD_MOSI, SD_SELECT);
 
   // Initialize SD
   if (!SD.begin(SD_SELECT, SPI_FULL_SPEED))
