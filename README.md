@@ -24,6 +24,8 @@ It can play [SMF files](https://en.wikipedia.org/wiki/MIDI) from a microSD card 
 
 Both models use microSD SPI pins SCK=40, MISO=39, MOSI=14, CS=12. v0.3 initializes these explicitly, instead of assuming the generic `SS` pin.
 
+**Arduino core 3.2.2 / GCC 14 note:** The upstream `MD_MIDIFile 2.6.0` library has a template type mismatch in `src/MD_MIDITrack.cpp` (`min(ARRAY_SIZE(mev.data), mLen)`). If your Arduino IDE reports this error, change that expression **inside the installed library** to `min((uint32_t)ARRAY_SIZE(mev.data), mLen)`. The CI workflow applies this single compatibility correction automatically; no application playback or GUI code is modified.
+
 ## Limitations
 This software provided as No warranty.<br>
 Files in the directory < 255, directory depth < 10. Path name length(include path name) < 255.<br>
