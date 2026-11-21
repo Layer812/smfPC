@@ -5,7 +5,7 @@ Work with M5Stack Midi module [Unit-Synth](https://www.switch-science.com/produc
 It works like [this](https://x.com/layer812/status/1890690659733921866)<br>
 It can play [SMF files](https://en.wikipedia.org/wiki/MIDI) from a microSD card on the [Cardputer](https://shop.m5stack.com/products/m5stack-cardputer-kit-w-m5stamps3) or **Cardputer-Adv**.<br>
 
-**v0.3 changes only hardware compatibility.** The v0.2 GUI, keyboard controls, MIDI output and SD file browser remain unchanged. The source firmware supports both models with the same sketch, using the board auto-detection provided by M5Cardputer 1.1.1 or newer.
+**v0.3 adds Cardputer-Adv compatibility**, preserving the v0.2 GUI, keyboard controls, MIDI output and SD file browser. The same source sketch supports both models via the M5Cardputer library's board auto-detection. MIDI playback has been confirmed on both Cardputer and Cardputer-Adv.
 
 ## Install
 1.Install [M5burner](https://docs.m5stack.com/en/uiflow/m5burner/intro)<br>
@@ -21,6 +21,7 @@ It can play [SMF files](https://en.wikipedia.org/wiki/MIDI) from a microSD card 
 3.Install **M5Cardputer 1.1.1 or newer** (with current M5Unified/M5GFX dependencies), **M5UnitSynth**, **MD_MIDIFile**, and **SdFat**.<br>
 4.Compile and upload to either Cardputer or Cardputer-Adv. No GUI or key remapping is required.<br>
 5.Connect Unit Synth to the **HY2.0-4P Grove port** (5V, GND, G1 RX, G2 TX). The sketch uses GPIO1 (UART RX) and GPIO2 (UART TX).<br>
+6.On the original Cardputer, ensure its Grove **5V switch is set to output (5V OUT)** so the external Unit Synth is powered. The Cardputer's built-in speaker is not used for MIDI output.<br>
 
 Both models use microSD SPI pins SCK=40, MISO=39, MOSI=14, CS=12. v0.3 initializes these explicitly, instead of assuming the generic `SS` pin.
 
@@ -34,11 +35,12 @@ Remain some bugs...<br>
 ## Version history
 | Version  | Share Code | Change |
 |:----------:|:-----------:|:-------------|
-| 0.3       | —                  | Cardputer-Adv support; unchanged GUI and controls; source build (hardware verification pending) |
+| 0.3       | —                  | Cardputer-Adv support; original Cardputer retained; hardware playback verified on both; GUI unchanged |
 | 0.2       | 9NxQL96EOvAzWNNk      | Initial Commit     |
 
 ## License
 - Please see the LICENSE file for more information.
 
 ## Thanks
+Thanks to [@EuPhobos](https://github.com/Layer812/smfPC/issues/1) and the contributor of [issues #2](https://github.com/Layer812/smfPC/issues/2) and [#3](https://github.com/Layer812/smfPC/issues/3) (account now displayed as `ghost`) for their bug reports.<br>
 Thanks for super work! [Zoltraak by Cosmic PIANO♪](https://www.youtube.com/watch?v=XzpTOdl-akg)<br>
