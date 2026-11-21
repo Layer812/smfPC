@@ -9,7 +9,7 @@ It can play [SMF files](https://en.wikipedia.org/wiki/MIDI) from a microSD card 
 
 ## Install
 1.Install [M5burner](https://docs.m5stack.com/en/uiflow/m5burner/intro)<br>
-2.The existing M5Burner entry and share code `9NxQL96EOvAzWNNk` refer to the original **v0.2** release, **not** the v0.3 Cardputer-Adv update. Build v0.3 from source until a new M5Burner image is published.<br>
+2.Install **v0.3** from M5Burner using share code **`ytA202BfCmxyVRkZ`** (Cardputer / Cardputer-Adv). The previous share code `9NxQL96EOvAzWNNk` remains for **v0.2**.<br>
 3.After flush the image, put SMF (.mid) files to your SD card (FAT32 formatted) and power on.<br>
 ## Usage
 1.Push 'M' Button, you can see help.<br>
@@ -35,7 +35,7 @@ Remain some bugs...<br>
 ## Version history
 | Version  | Share Code | Change |
 |:----------:|:-----------:|:-------------|
-| 0.3       | —                  | Cardputer-Adv support; original Cardputer retained; hardware playback verified on both; GUI unchanged |
+| 0.3       | ytA202BfCmxyVRkZ | Cardputer-Adv support; original Cardputer retained; hardware playback verified on both; GUI unchanged |
 | 0.2       | 9NxQL96EOvAzWNNk      | Initial Commit     |
 
 ## License
